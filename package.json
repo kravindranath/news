@@ -7,7 +7,9 @@
   "author": "kr",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start-dev": "nodemon server/index.js",
+    "build": "webpack --config webpack.config.js",
+    "lint": "eslint ./src ./server"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -16,6 +18,17 @@
     "react-router": "^5.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.10.0",
+    "html-webpack-plugin": "^4.5.0",
+    "nodemon": "^2.0.4",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^3.7.2"
   }
 }
