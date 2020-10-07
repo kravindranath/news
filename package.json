@@ -1,0 +1,9 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "news template render",
+  "main": "index.js",
+  "repository": "git@github.com:kravindranath/news.git",
+  "author": "kr",
+  "license": "MIT"
+}
