@@ -8,11 +8,6 @@ const webpackConfig = require('../webpack.config.js');
 const compiler = webpack(webpackConfig);
 
 app.use(express.static('public'));
-/*
-app.use('*', function(req, res){
-    res.send('Hello World');
-});
-*/
 
 app.use(webpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath
