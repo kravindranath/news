@@ -7,7 +7,7 @@ function stripTags(str){
 }
 
 function getRegionVal(){
-    let regionVal = 'us';
+    let regionVal = 'gb';
     if(localStorage) {
         regionVal = localStorage.getItem('locale');
     }
@@ -15,7 +15,7 @@ function getRegionVal(){
 }
 
 function setRegionVal(region){
-    let regionVal = region || 'us';
+    let regionVal = region || 'gb';
     if(localStorage) {
         localStorage.setItem('locale', regionVal);
     }

@@ -36,3 +36,7 @@
     font-size: 0.9rem;
     width: 100px;
 }
+.region-dropdown select{
+    border: 0;
+    background: none;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { getRegionVal, setRegionVal } from '../../../helpers'
+import { regions } from '../../../config/default';
 
 class RegionDropDown extends React.Component {
 
@@ -7,6 +8,7 @@ class RegionDropDown extends React.Component {
         super();
         this.drpRef = React.createRef();
         this.changeRegion = this.changeRegion.bind(this);
+        this.state = { regionVal : '' };
     }
 
     componentDidMount(){
@@ -14,32 +16,32 @@ class RegionDropDown extends React.Component {
         if(!regionVal){
             setRegionVal();
         }
+        this.setState({ regionVal : regionVal });
     }
 
     changeRegion(){
         let drpDwn = this.drpRef.current;
-        let val = 'us';
+        let val = 'gb';
         if(drpDwn){
             val = drpDwn.value;
         }
         setRegionVal(val);
+        this.setState({ regionVal : val });
     }
 
     render() {
-        let renderOptions = ['us', 'gb', 'au'].map((item,k)=>{
+        let regionVal = this.state.regionVal;
+        let renderOptions = regions.map((item,k)=>{
             let itemUC = item.toUpperCase();
-            let isSelected = (item === getRegionVal());
 
-            return isSelected ? (
-                <option selected="selected" value={item}>{itemUC}</option>
-            ) : (
-                <option value={item}>{itemUC}</option>
+            return (
+                <option key={`opt-${k}`} value={item}>{itemUC}</option> 
             );
         })
         return (
             <div className="region-dropdown">
                 <label htmlFor="region">Region: </label>
-                <select ref={this.drpRef} name="region" id="region" onChange={this.changeRegion}>
+                <select value={regionVal} ref={this.drpRef} name="region" id="region" onChange={this.changeRegion}>
                     {renderOptions}
                 </select>
             </div>
