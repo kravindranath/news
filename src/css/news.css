@@ -1,0 +1,60 @@
+
+.SearchBox{
+    width: 80%;
+    margin-top: 40px;
+    padding: 0 10%;
+    overflow: hidden;
+}
+
+.SearchBox input[type=search]{
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.res-msg{
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+.row{
+    padding: 1rem;
+}
+.news{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    overflow: hidden;
+}
+.news .title-wrap{
+    margin-bottom: 20px;
+}
+.news .title-wrap h3{
+    margin: 0 0 5px 0;
+}
+.news .author, .news .source{
+    font-size: 0.8rem;
+    color: #666;
+}
+.news .desc{
+    width: 75%;
+    float: left;
+}
+.news .description{
+    margin-top: 0;
+}
+
+.news .img{
+    width: 20%;
+    display: block;
+    max-width: 200px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+.news img{
+    width: 100%;
+    margin: 0;
+}

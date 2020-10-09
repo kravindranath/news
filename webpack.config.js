@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -13,11 +14,20 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: 'babel-loader'
+      },
+      {
+        test: /\.css$/i,
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            publicPath: '/css/',
+          },
+        }, 'css-loader'],
       }
     ]
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx'],
+    extensions: ['.json', '.js', '.jsx', '.css'],
   },
   output: {
     filename: 'bundle.js',
@@ -25,6 +35,10 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'templates', 'main.html')

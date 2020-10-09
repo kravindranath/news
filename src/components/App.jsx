@@ -7,22 +7,16 @@ import {
 } from "react-router-dom";
 
 import routes from '../config/routes';
+import Navigation from './modules/Navigation';
+
+import '../css/normalize.css';
+import '../css/main';
 
 function App() {
     return (
         <Router>
             <div>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/news">News</Link>
-                    </li>
-                    <li>
-                        <Link to="/news/12345">Article</Link>
-                    </li>
-                </ul>
+                <Navigation />
                 <Switch>
                 {
                     routes.map((route, i) => (

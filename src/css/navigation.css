@@ -1,0 +1,28 @@
+.navigation{
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+
+.navigation ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+.navigation ul li{
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.navigation a{
+    color: black;
+    display: block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    background: #eee;
+}
