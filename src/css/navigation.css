@@ -40,3 +40,13 @@
     border: 0;
     background: none;
 }
+
+@media only screen   and (min-width: 320px) and (max-width: 747px) {
+    .navigation .region-dropdown{
+        top: 4px;
+        right: 0;
+    }
+    .navigation ul{
+        margin-top:20px;
+    }
+}
