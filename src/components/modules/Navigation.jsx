@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import RegionDropDown from './ui/RegionDropDown';
+
 import '../../css/navigation';
 
 function Navigation(){
@@ -17,6 +19,7 @@ function Navigation(){
                     <Link to="/news/12345">Article</Link>
                 </li>
             </ul>
+            <RegionDropDown />
         </nav>
     );
 }

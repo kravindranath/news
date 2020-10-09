@@ -1,6 +1,6 @@
 
 const config = require('../config/default');
-const { stripTags } = require("../helpers");
+const { stripTags, getRegionVal } = require("../helpers");
 const ROOT_PATH = 'https://newsapi.org/v2/';
 const stripSpecialRegex = /\W+/gi;
 const API_KEY = config.API_KEY;
@@ -28,7 +28,7 @@ function getAPIConfig(_config){
 
 function getAPIUrl(endpoint, params){
 
-    let country = params.country || '';
+    let country = getRegionVal() || '';
     let q       = params.q || '';
     let paramsNew = {};
 

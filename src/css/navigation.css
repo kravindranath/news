@@ -1,6 +1,8 @@
 .navigation{
     border-bottom: 1px solid #eee;
     overflow: hidden;
+    position: relative;
+    margin: 0 20px;
 }
 
 .navigation ul{
@@ -25,4 +27,12 @@
 
 .navigation a:hover{
     background: #eee;
+}
+
+.navigation .region-dropdown{
+    position: absolute;
+    right: 0;
+    top: 11px;
+    font-size: 0.9rem;
+    width: 100px;
 }

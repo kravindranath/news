@@ -36,14 +36,15 @@ class Home extends React.Component {
     }
 
     render() {
-        let searchTerm = this.state.searchTerm;
+        let searchTerm = this.state.searchTerm; 
+        let articles = this.state.articles;
 
         return(
             <MainLayout>
                 <SearchBox
                     inpRef={this.inpRef}
                     onChangeHandler={this.onChangeHandler}
-                    totalarticles={totalarticles}
+                    totalarticles={articles.length}
                     searchTerm={searchTerm}
                 />
                 <NewsContent articles={articles} />

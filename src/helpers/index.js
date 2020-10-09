@@ -6,6 +6,21 @@ function stripTags(str){
     return str.replace(stripHtmlRegex, '');
 }
 
+function getRegionVal(){
+    let regionVal = 'us';
+    if(localStorage) {
+        regionVal = localStorage.getItem('locale');
+    }
+    return regionVal;
+}
+
+function setRegionVal(region){
+    let regionVal = region || 'us';
+    if(localStorage) {
+        localStorage.setItem('locale', regionVal);
+    }
+}
+
 function formatDateShort(str){
     let dateLabel = '';
     if(str) {
@@ -21,6 +36,8 @@ function formatDateShort(str){
 }
 
 module.exports = {
+    getRegionVal    : getRegionVal,
+    setRegionVal    : setRegionVal,
     formatDateShort : formatDateShort,
-    stripTags : stripTags
+    stripTags       : stripTags
 };
