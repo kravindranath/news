@@ -22,22 +22,33 @@
     padding: 1rem;
 }
 .news{
-    width: 100%;
+    width: calc(100% - 40px);
     overflow: hidden;
     margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
     padding: 20px;
     overflow: hidden;
+    background-color: white;
 }
 .news .title-wrap{
     margin-bottom: 20px;
+    position: relative;
+    padding-top: 20px;
 }
 .news .title-wrap h3{
     margin: 0 0 5px 0;
 }
-.news .author, .news .source{
+.news .author, .news .source, .news .date{
     font-size: 0.8rem;
     color: #666;
+}
+
+.news span.source {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    font-size: 0.7rem;
+    background: #fafafa;
+    padding: 2px;
 }
 .news .desc{
     width: 75%;
