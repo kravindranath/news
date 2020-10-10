@@ -5,18 +5,18 @@ import RegionDropDown from './ui/RegionDropDown';
 
 import '../../css/navigation';
 
+const homeTxt = 'Home';
+const newsTxt = 'News';
+
 function Navigation(){
     return (
-        <nav className="navigation">
-            <ul>
+        <nav className="navigation" role="navigation" aria-label="Main Menu">
+            <ul role="menu">
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link role="menuitem" aria-label={homeTxt} to="/">{homeTxt}</Link>
                 </li>
                 <li>
-                    <Link to="/news">News</Link>
-                </li>
-                <li>
-                    <Link to="/news/12345">Article</Link>
+                    <Link role="menuitem" aria-label={newsTxt} to="/news">{newsTxt}</Link>
                 </li>
             </ul>
             <RegionDropDown />

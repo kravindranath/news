@@ -26,7 +26,7 @@ class RegionDropDown extends React.Component {
             val = drpDwn.value;
         }
         setRegionVal(val);
-        this.setState({ regionVal : val });
+        location.reload();
     }
 
     render() {
@@ -35,13 +35,13 @@ class RegionDropDown extends React.Component {
             let itemUC = item.toUpperCase();
 
             return (
-                <option key={`opt-${k}`} value={item}>{itemUC}</option> 
+                <option role="option" key={`opt-${k}`} value={item}>{itemUC}</option> 
             );
         })
         return (
             <div className="region-dropdown">
-                <label htmlFor="region">Region: </label>
-                <select value={regionVal} ref={this.drpRef} name="region" id="region" onChange={this.changeRegion}>
+                <label id="rg" htmlFor="region">Region: </label>
+                <select aria-labelledby="rg" aria-label="Region" value={regionVal} ref={this.drpRef} name="region" id="region" onChange={this.changeRegion}>
                     {renderOptions}
                 </select>
             </div>

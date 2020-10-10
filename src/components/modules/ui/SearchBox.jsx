@@ -7,11 +7,12 @@ function SearchBox(_props){
     let searchTerm = props.searchTerm || '';
     let hasKeyword = (searchTerm.length > 0);
     let totalarticles = props.totalarticles || 0;
+    let searchMsg = `Showing ${totalarticles} results for '${searchTerm}'`;
     return (
         <div className="SearchBox">
             <input ref={inpRef} onChange={onChangeHandler} type="search" placeholder="Search for Latest News..." />
             { hasKeyword &&
-                <div className="res-msg">{`Showing ${totalarticles} results for '${searchTerm}'`}</div>
+                <div aria-label={searchMsg} className="res-msg">{searchMsg}</div>
             }
         </div>
     );

@@ -32,7 +32,7 @@ function getAPIUrl(endpoint, params){
     let q       = params.q || '';
     let paramsNew = {};
 
-    if(country) {
+    if(params && params.country) {
         paramsNew.country = country; 
     }
 
