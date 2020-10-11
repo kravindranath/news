@@ -1,0 +1,44 @@
+.sources .row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.source{
+    flex-basis: 180px;
+    padding: 1rem;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+    margin: 1rem;
+}
+
+.source:hover{
+    box-shadow: 0 0 10px #ddd;
+}
+.source a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all 0.2s ease-in;
+}
+
+.source .name{
+    margin-top: 0;
+}
+
+.source .description{
+    color: #666;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 747px) {
+    .sources .row{
+        display: block;
+    }
+    .source{
+        flex-basis: none;
+    }
+    
+}

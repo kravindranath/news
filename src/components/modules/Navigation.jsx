@@ -6,7 +6,7 @@ import RegionDropDown from './ui/RegionDropDown';
 import '../../css/navigation';
 
 const homeTxt = 'Home';
-const newsTxt = 'News';
+const sourcesTxt = 'News From Sources';
 
 function Navigation(){
     return (
@@ -16,7 +16,7 @@ function Navigation(){
                     <Link role="menuitem" aria-label={homeTxt} to="/">{homeTxt}</Link>
                 </li>
                 <li>
-                    <Link role="menuitem" aria-label={newsTxt} to="/news">{newsTxt}</Link>
+                    <Link role="menuitem" aria-label={sourcesTxt} to="/sources">{sourcesTxt}</Link>
                 </li>
             </ul>
             <RegionDropDown />

@@ -9,7 +9,8 @@ function News(_item){
     this.description = stripTags(description);
     this.imageSrc = urlToImage;
     this.source = _get(source, 'name', '');
-    this.author = author || '';
+    this.sourceId = _get(source, 'id', '');
+    this.author = stripTags(author) || '';
     this.url = url;
     this.publishedAt = publishedAt || '';
 

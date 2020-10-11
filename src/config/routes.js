@@ -1,17 +1,16 @@
-import { Article, Home, News } from '../components/pages'
+import { News, Home, Sources } from '../components/pages'
 
 //Home route should be last
 let routes = [
     {
-        key: 'nws',
-        path: "/news",
-        isExact: true,
+        key: 'src',
+        path: "/news/:id",
         component: News
     },
     {
-        key: 'art',
-        path: "/news/:id",
-        component: Article
+        key: 'srcs',
+        path: "/sources",
+        component: Sources
     },
     {
         key: 'hm',

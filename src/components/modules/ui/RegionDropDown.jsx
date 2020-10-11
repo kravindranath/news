@@ -26,7 +26,7 @@ class RegionDropDown extends React.Component {
             val = drpDwn.value;
         }
         setRegionVal(val);
-        location.reload();
+        location.href = '/';
     }
 
     render() {

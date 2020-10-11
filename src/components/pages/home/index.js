@@ -2,7 +2,7 @@ import React from 'react';
 import api from '../../../api';
 
 import MainLayout from '../../layouts/MainLayout';
-import NewsContent from '../../modules/ui/NewsContent';
+import ResultsContent from '../../modules/ui/ResultsContent';
 import SearchBox from '../../modules/ui/SearchBox';
 
 import '../../../css/news';
@@ -14,7 +14,7 @@ class Home extends React.Component {
     constructor() {
         super();
         this.state = {
-            articles: [],
+            data: [],
             searchTerm: ''
         }
         this.inpRef = React.createRef();
@@ -23,7 +23,7 @@ class Home extends React.Component {
     }
 
     componentDidMount(){
-        fetchData.call(this, '')
+        fetchData.call(this, { q: '', endpoint: 'top-headlines' })
     }
 
     onChangeHandler(evt){
@@ -32,12 +32,13 @@ class Home extends React.Component {
         this.setState({
             searchTerm: searchTerm
         });
-        fetchData.call(me, searchTerm)
+        fetchData.call(me, { q: searchTerm, endpoint: 'everything' })
     }
 
     render() {
         let searchTerm = this.state.searchTerm; 
-        let articles = this.state.articles;
+        let data = this.state.data;
+        let articles = (data && data.articles) || [];
 
         return(
             <MainLayout>
@@ -47,7 +48,7 @@ class Home extends React.Component {
                     totalarticles={articles.length}
                     searchTerm={searchTerm}
                 />
-                <NewsContent articles={articles} />
+                <ResultsContent contentType="articles" articles={articles} />
             </MainLayout>
         );
     }

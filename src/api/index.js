@@ -5,50 +5,30 @@ const ROOT_PATH = 'https://newsapi.org/v2/';
 const stripSpecialRegex = /\W+/gi;
 const API_KEY = config.API_KEY;
 
-const API_ENDPOINTS = {
-    all : {
-        path : ROOT_PATH,
-        endpoint: 'everything'
-    },
-    top : {
-        path : ROOT_PATH,
-        endpoint: 'top-headlines'
-    }
-}
-
-function getAPIConfig(_config){
-
-    let config = _config || {};
-    let baseConfig = API_ENDPOINTS[config.endpoint || 'all'] || {};
-    
-    baseConfig.params = config.params || {};
-
-    return baseConfig;
-}
-
-function getAPIUrl(endpoint, params){
+function getAPIUrl(params){
 
     let country = getRegionVal() || '';
     let q       = params.q || '';
     let paramsNew = {};
+    let API_NAME = params.endpoint || 'top-headlines';
+    let addCountryParam = ((API_NAME === 'top-headlines') && !(params.sourceId))
 
-    if(params && params.country) {
+    if(addCountryParam) {
         paramsNew.country = country; 
     }
 
-    if(q) {
+    if(params && params.sourceId) {
+        paramsNew.sources = params.sourceId;
+    }
+
+    if(q && q.length > 0) {
         paramsNew.q = q; 
     }
 
-    paramsNew.apiKey = API_KEY; 
-
-    let config = getAPIConfig({
-        endpoint: endpoint,
-        params: paramsNew
-    });
-
-    let path = `${config.path}${config.endpoint}`;
-    let queryParams = Object.entries(config.params);
+    paramsNew.apiKey = API_KEY;
+    
+    let path = `${ROOT_PATH}${API_NAME}`;
+    let queryParams = Object.entries(paramsNew);
     var queryStr = '';
 
     queryParams.forEach((item) => {
@@ -58,14 +38,14 @@ function getAPIUrl(endpoint, params){
     return `${path}?${queryStr.substr(1)}`;
 }
 
-function fetchData(_searchTerm){
+function fetchData(_options){
     let me = this;
-    let searchTerm = _searchTerm || '';
-    let cleanSearch = stripTags(searchTerm);
+    let options = _options || '';
+    let { endpoint, sourceId, q } = { ...options };
+
+    let cleanSearch = stripTags(q);
     cleanSearch = cleanSearch.replace(stripSpecialRegex, '+');
-    let api_all = getAPIUrl('all', {q: cleanSearch});
-    let api_top = getAPIUrl('top', {country: 'gb'});
-    let apiUrl = cleanSearch.length > 0 ? api_all : api_top;
+    let apiUrl = getAPIUrl({q: cleanSearch, sourceId: sourceId, endpoint: endpoint });
 
     if(this.debTimer !== null){
         clearTimeout(this.debTimer);
@@ -76,14 +56,14 @@ function fetchData(_searchTerm){
             return res.json();
         }).then((data)=>{
             me.setState({
-                articles: (data && data.articles) || []
+                data: data || []
             })
-        })
+        });
     }, 1000);
+    
 }
 
 module.exports = {
     fetchData    : fetchData,
-    getAPIConfig : getAPIConfig,
     getAPIUrl    : getAPIUrl
 }

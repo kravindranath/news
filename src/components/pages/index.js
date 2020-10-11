@@ -1,9 +1,10 @@
-import News from './news';
 import Home from './home';
-import Article from './article';
+import News from './news';
+import Sources from './sources';
+
 
 export {
     Home,
     News,
-    Article
+    Sources
 };

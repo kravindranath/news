@@ -1,3 +1,5 @@
+let _get = require('lodash/get');
+
 const stripHtmlRegex = /(<([^>]+)>)/gi;
 const arrayMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -35,7 +37,14 @@ function formatDateShort(str){
     return dateLabel;
 }
 
+function getRouteParams(_this){
+    let me = _this || {};
+    let params = _get(me, 'props.match.params', {});
+    return params;
+}
+
 module.exports = {
+    getRouteParams  : getRouteParams,
     getRegionVal    : getRegionVal,
     setRegionVal    : setRegionVal,
     formatDateShort : formatDateShort,

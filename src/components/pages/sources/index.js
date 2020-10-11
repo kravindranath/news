@@ -6,11 +6,11 @@ import MainLayout from '../../layouts/MainLayout';
 import ResultsContent from '../../modules/ui/ResultsContent';
 import { getRouteParams } from '../../../helpers';
 
-import '../../../css/news';
+import '../../../css/sources';
 
 const fetchData = api.fetchData;
 
-class News extends React.Component {
+class Sources extends React.Component {
 
     constructor() {
         super();
@@ -22,19 +22,19 @@ class News extends React.Component {
     componentDidMount(){
         let params = getRouteParams(this);
 
-        fetchData.call(this, { sourceId: params.id })
+        fetchData.call(this, {endpoint: 'sources', sourceId: params.id })
     }
 
     render() {
         let data = this.state.data;
-        let articles = (data && data.articles) || [];
+        let sources = (data && data.sources) || [];
 
         return(
             <MainLayout>
-                <ResultsContent contentType="articles" articles={articles} />
+                <ResultsContent contentType="sources" sources={sources} />
             </MainLayout>
         );
     }
 }
 
-export default News;
+export default Sources;

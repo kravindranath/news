@@ -14,30 +14,27 @@
     margin-bottom: 20px;
 }
 
-.res-msg{
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-}
-.row{
+.articles .row{
     padding: 1rem;
 }
 .news{
     width: calc(100% - 40px);
-    overflow: hidden;
     margin-bottom: 20px;
     padding: 20px;
     overflow: hidden;
     background-color: white;
+    position: relative;
 }
-a.news{
+.news:hover{
+    box-shadow: 0 0 10px #ddd;
+}
+.news a{
     text-decoration: none;
     color: inherit;
     display: block;
     transition: all 0.2s ease-in;
 }
-a.news:hover{
-    box-shadow: 0 0 10px #eee;
-}
+
 .news .title-wrap{
     margin-bottom: 20px;
     position: relative;
@@ -46,18 +43,25 @@ a.news:hover{
 .news .title-wrap h3{
     margin: 0 0 5px 0;
 }
-.news .author, .news .source, .news .date{
-    font-size: 0.8rem;
+.news .author, .news .source-name, .news .date{
+    font-size: 0.7rem;
+}
+.news .author, .news .date{
     color: #666;
 }
 
-.news span.source {
+.news .source-link {
     position: absolute;
-    top: -5px;
-    left: 0;
+    top: 13px;
+    left: 20px;
     font-size: 0.7rem;
-    background: #fafafa;
-    padding: 2px;
+    background: #eee;
+    padding: 4px 8px;
+    z-index: 2;
+}
+.news .source-link:hover{
+    background-color: #e90056;
+    color: white;
 }
 .news .desc{
     width: 75%;
@@ -65,6 +69,7 @@ a.news:hover{
 }
 .news .description{
     margin-top: 0;
+    line-height: 1.4rem;
 }
 
 .news .img{

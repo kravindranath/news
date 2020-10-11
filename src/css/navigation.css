@@ -1,5 +1,4 @@
 .navigation{
-    border-bottom: 1px solid #eee;
     overflow: hidden;
     position: relative;
     margin: 0 20px;
@@ -41,12 +40,16 @@
     background: none;
 }
 
-@media only screen   and (min-width: 320px) and (max-width: 747px) {
+@media only screen and (min-width: 320px) and (max-width: 747px) {
     .navigation .region-dropdown{
         top: 4px;
         right: 0;
     }
     .navigation ul{
-        margin-top:20px;
+        margin-top:40px;
+    }
+    .navigation a{
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
