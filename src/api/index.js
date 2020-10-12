@@ -27,14 +27,14 @@ function getAPIUrl(params) {
     }
 
     if (q && q.length > 0) {
-        paramsNew.q = q;
+        paramsNew.q = q.replace(stripSpecialRegex, '+');
     }
 
-    paramsNew.apiKey = API_KEY;
+    paramsNew.apiKey = params.apiKey || API_KEY;
 
     let path = `${ROOT_PATH}${API_NAME}`;
     let queryParams = Object.entries(paramsNew);
-    var queryStr = '';
+    let queryStr = '';
 
     queryParams.forEach((item) => {
         queryStr += `&${(item && item.join('='))}`;
@@ -53,7 +53,6 @@ function fetchData(_options) {
     let { endpoint, sourceId, q } = { ...options };
 
     let cleanSearch = stripTags(q);
-    cleanSearch = cleanSearch.replace(stripSpecialRegex, '+');
     let apiUrl = getAPIUrl({ q: cleanSearch, sourceId: sourceId, endpoint: endpoint });
 
     if (me.debTimer !== null) {

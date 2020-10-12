@@ -1,5 +1,5 @@
-import _get from 'lodash/get';
-import { stripTags } from '../helpers';
+let _get = require('lodash/get');
+let stripTags = require('../helpers').stripTags;
 
 /**
  * Create News constructor
@@ -23,4 +23,4 @@ function News(_item) {
 
 }
 
-export default News;
+module.exports = News;

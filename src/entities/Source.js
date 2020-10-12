@@ -1,4 +1,4 @@
-import { stripTags } from '../helpers';
+let stripTags = require('../helpers').stripTags;
 
 /**
  * Create Source constructor
@@ -17,4 +17,4 @@ function Source(_item) {
     return this;
 }
 
-export default Source;
+module.exports = Source;

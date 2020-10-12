@@ -1,8 +1,9 @@
 import React from 'react';
 import NewsCard from './NewsCard';
 import SourceCard from './SourceCard';
-import News from '../../../entities/News';
-import Source from '../../../entities/Source';
+const News = require('../../../entities/News');
+const Source = require('../../../entities/Source');
+
 /**
  * Render articles as a row of NewsCard
  * @param {Object} _props component props
