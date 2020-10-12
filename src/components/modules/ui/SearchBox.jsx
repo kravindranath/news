@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Render Search input Box with onChange
- * @param {Object} _props 
+ * @param {Object} _props component props
  */
 function SearchBox(_props) {
     let props = _props || {};

@@ -3,7 +3,7 @@ import { stripTags } from '../helpers';
 
 /**
  * Create News constructor
- * @param {Object} _item 
+ * @param {Object} _item data from API
  * @returns {Object}
  */
 function News(_item) {

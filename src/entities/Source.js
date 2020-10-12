@@ -2,7 +2,7 @@ import { stripTags } from '../helpers';
 
 /**
  * Create Source constructor
- * @param {Object} _item 
+ * @param {Object} _item data from API
  * @returns {Object}
  */
 function Source(_item) {

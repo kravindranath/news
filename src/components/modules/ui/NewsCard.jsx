@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 /**
  * Creates a News Card for displaying articles
- * @param {Object} _props 
+ * @param {Object} _props component props
  */
 function NewsCard(_props) {
 

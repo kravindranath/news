@@ -5,7 +5,7 @@ import News from '../../../entities/News';
 import Source from '../../../entities/Source';
 /**
  * Render articles as a row of NewsCard
- * @param {Object} _props 
+ * @param {Object} _props component props
  */
 function RenderArticles(_props) {
     let props = _props || {};
@@ -33,7 +33,7 @@ function RenderArticles(_props) {
 
 /**
  * Render sources as a row of source cards
- * @param {Object} _props 
+ * @param {Object} _props component props
  */
 function RenderSources(_props) {
     let props = _props || {};
@@ -57,7 +57,7 @@ function RenderSources(_props) {
 
 /**
  * Render results as rows containing cards
- * @param {Object} _props 
+ * @param {Object} _props component props
  */
 function ResultsContent(_props) {
     let props = _props || {};

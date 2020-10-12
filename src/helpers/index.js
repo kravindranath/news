@@ -3,11 +3,18 @@ let _get = require('lodash/get');
 const stripHtmlRegex = /(<([^>]+)>)/gi;
 const arrayMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+/**
+ * Simple function to strip HTML tags from a string
+ * @param {String} str Input string
+ */
 function stripTags(str) {
     if (!str) return '';
     return str.replace(stripHtmlRegex, '');
 }
 
+/**
+ * Get region value from localStorage
+ */
 function getRegionVal() {
     let regionVal = 'gb';
     if (localStorage) {
@@ -16,6 +23,9 @@ function getRegionVal() {
     return regionVal;
 }
 
+/**
+ * Set region value in localStorage
+ */
 function setRegionVal(region) {
     let regionVal = region || 'gb';
     if (localStorage) {
@@ -23,6 +33,10 @@ function setRegionVal(region) {
     }
 }
 
+/**
+ * Convert date string to readable format DD Mon, YYYY
+ * @param {String} str Input date as string 
+ */
 function formatDateShort(str) {
     let dateLabel = '';
     if (str) {
@@ -37,6 +51,10 @@ function formatDateShort(str) {
     return dateLabel;
 }
 
+/**
+ * Get route params object from App
+ * @param {Object} _this 
+ */
 function getRouteParams(_this) {
     let me = _this || {};
     let params = _get(me, 'props.match.params', {});

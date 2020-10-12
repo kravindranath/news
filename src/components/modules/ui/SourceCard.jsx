@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 /**
  * Render a Source card
- * @param {Object} _props 
+ * @param {Object} _props component props
  */
 function SourceCard(_props) {
     let props = _props || {};
