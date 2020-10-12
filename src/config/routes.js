@@ -1,20 +1,20 @@
-import { News, Home, Sources } from '../components/pages'
+import { News, Home, Sources } from '../components/pages';
 
 //Home route should be last
 let routes = [
     {
         key: 'src',
-        path: "/news/:id",
+        path: '/news/:id',
         component: News
     },
     {
         key: 'srcs',
-        path: "/sources",
+        path: '/sources',
         component: Sources
     },
     {
         key: 'hm',
-        path: "/",
+        path: '/',
         component: Home
     }
 ];

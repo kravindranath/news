@@ -16,14 +16,14 @@ class Home extends React.Component {
         this.state = {
             data: [],
             searchTerm: ''
-        }
+        };
         this.inpRef = React.createRef();
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.debTimer = null;
     }
 
     componentDidMount() {
-        fetchData.call(this, { q: '', endpoint: 'top-headlines' })
+        fetchData.call(this, { q: '', endpoint: 'top-headlines' });
     }
 
     onChangeHandler(evt) {
@@ -32,7 +32,7 @@ class Home extends React.Component {
         this.setState({
             searchTerm: searchTerm
         });
-        fetchData.call(me, { q: searchTerm, endpoint: 'everything' })
+        fetchData.call(me, { q: searchTerm, endpoint: 'everything' });
     }
 
     render() {

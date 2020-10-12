@@ -1,7 +1,7 @@
 let _get = require('lodash/get');
 
 const stripHtmlRegex = /(<([^>]+)>)/gi;
-const arrayMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const arrayMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /**
  * Simple function to strip HTML tags from a string

@@ -16,13 +16,13 @@ class Sources extends React.Component {
         super();
         this.state = {
             data: [],
-        }
+        };
     }
 
     componentDidMount() {
         let params = getRouteParams(this);
 
-        fetchData.call(this, { endpoint: 'sources', sourceId: params.id })
+        fetchData.call(this, { endpoint: 'sources', sourceId: params.id });
     }
 
     render() {

@@ -16,13 +16,13 @@ class News extends React.Component {
         super();
         this.state = {
             data: [],
-        }
+        };
     }
 
     componentDidMount() {
         let params = getRouteParams(this);
 
-        fetchData.call(this, { sourceId: params.id })
+        fetchData.call(this, { sourceId: params.id });
     }
 
     render() {
