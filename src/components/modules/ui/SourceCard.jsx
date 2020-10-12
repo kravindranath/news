@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Render a Source card
+ * @param {Object} _props 
+ */
 function SourceCard(_props) {
     let props = _props || {};
     let { key, id, name, description, category } = { ...props };
@@ -8,7 +12,7 @@ function SourceCard(_props) {
     return (
         <div className={`source ${category}`} key={`source-${key}`}>
             <Link to={`/news/${id}`}>
-                <p className="name">{name}</p>
+                <p aria-label={name} className="name">{name}</p>
                 <p className="description">{description}</p>
             </Link>
         </div>

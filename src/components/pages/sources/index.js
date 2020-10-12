@@ -19,17 +19,17 @@ class Sources extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         let params = getRouteParams(this);
 
-        fetchData.call(this, {endpoint: 'sources', sourceId: params.id })
+        fetchData.call(this, { endpoint: 'sources', sourceId: params.id })
     }
 
     render() {
         let data = this.state.data;
         let sources = (data && data.sources) || [];
 
-        return(
+        return (
             <MainLayout>
                 <ResultsContent contentType="sources" sources={sources} />
             </MainLayout>

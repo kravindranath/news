@@ -1,6 +1,10 @@
 import React from 'react';
 
-function SearchBox(_props){
+/**
+ * Render Search input Box with onChange
+ * @param {Object} _props 
+ */
+function SearchBox(_props) {
     let props = _props || {};
     let inpRef = props.inpRef;
     let onChangeHandler = props.onChangeHandler;
@@ -8,6 +12,7 @@ function SearchBox(_props){
     let hasKeyword = (searchTerm.length > 0);
     let totalarticles = props.totalarticles || 0;
     let searchMsg = `Showing ${totalarticles} results for '${searchTerm}'`;
+
     return (
         <div className="SearchBox">
             <input ref={inpRef} onChange={onChangeHandler} type="search" placeholder="Search for Latest News..." />

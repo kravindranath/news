@@ -95,6 +95,9 @@
         margin: 0;
         float: none;
     }
+    .SearchBox{
+        margin-top: 20px;
+    }
     .SearchBox input[type=search]{
         font-size: 1rem;
     }

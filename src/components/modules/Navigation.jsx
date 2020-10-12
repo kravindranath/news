@@ -8,7 +8,10 @@ import '../../css/navigation';
 const homeTxt = 'Home';
 const sourcesTxt = 'News From Sources';
 
-function Navigation(){
+/**
+ * Function to render the main navigation in the App
+ */
+function Navigation() {
     return (
         <nav className="navigation" role="navigation" aria-label="Main Menu">
             <ul role="menu">

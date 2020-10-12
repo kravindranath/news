@@ -3,13 +3,16 @@ import NewsCard from './NewsCard';
 import SourceCard from './SourceCard';
 import News from '../../../entities/News';
 import Source from '../../../entities/Source';
-
-function RenderArticles(_props){
+/**
+ * Render articles as a row of NewsCard
+ * @param {Object} _props 
+ */
+function RenderArticles(_props) {
     let props = _props || {};
     let articles = props.articles || [];
     let renderMarkup;
 
-    renderMarkup = articles.map((item,k)=>{
+    renderMarkup = articles.map((item, k) => {
         let news = new News(item);
         return (
             <NewsCard
@@ -24,16 +27,20 @@ function RenderArticles(_props){
                 publishedAt={news.publishedAt}
             />
         );
-    }); 
+    });
     return renderMarkup;
 }
 
-function RenderSources(_props){
+/**
+ * Render sources as a row of source cards
+ * @param {Object} _props 
+ */
+function RenderSources(_props) {
     let props = _props || {};
     let sources = props.sources || [];
     let renderMarkup;
 
-    renderMarkup = sources.map((item,k)=>{
+    renderMarkup = sources.map((item, k) => {
         let source = new Source(item);
         return (
             <SourceCard
@@ -44,11 +51,15 @@ function RenderSources(_props){
                 category={source.category}
             />
         );
-    }); 
+    });
     return renderMarkup;
 }
 
-function ResultsContent(_props){
+/**
+ * Render results as rows containing cards
+ * @param {Object} _props 
+ */
+function ResultsContent(_props) {
     let props = _props || {};
     let contentType = props.contentType;
     let isArticles = (contentType === 'articles');
@@ -58,10 +69,10 @@ function ResultsContent(_props){
         <div aria-label="Page is loading" className="loading">Loading...</div>
     );
 
-    if(isArticles) {
+    if (isArticles) {
         renderMarkup = (<RenderArticles articles={props.articles} />);
     }
-    if(isSources) {
+    if (isSources) {
         renderMarkup = (<RenderSources sources={props.sources} />);
     }
 

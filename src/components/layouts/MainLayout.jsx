@@ -1,9 +1,13 @@
 import React from 'react';
 
-function MainLayout(_props){
+/**
+ * Main layout wrapper for the app
+ * @param {Object} _props 
+ */
+function MainLayout(_props) {
     var props = _props || {};
-    
-    return(
+
+    return (
         <div className="mainLayout">
             {props.children}
         </div>

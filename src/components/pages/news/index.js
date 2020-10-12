@@ -19,7 +19,7 @@ class News extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         let params = getRouteParams(this);
 
         fetchData.call(this, { sourceId: params.id })
@@ -29,7 +29,7 @@ class News extends React.Component {
         let data = this.state.data;
         let articles = (data && data.articles) || [];
 
-        return(
+        return (
             <MainLayout>
                 <ResultsContent contentType="articles" articles={articles} />
             </MainLayout>

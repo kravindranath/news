@@ -1,9 +1,14 @@
 import { stripTags } from '../helpers';
 
-function Source(_item){
+/**
+ * Create Source constructor
+ * @param {Object} _item 
+ * @returns {Object}
+ */
+function Source(_item) {
     let item = _item || {};
     let { id, category, description, name } = { ...item };
-    
+
     this.id = id;
     this.description = stripTags(description);
     this.category = category;

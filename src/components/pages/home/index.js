@@ -22,11 +22,11 @@ class Home extends React.Component {
         this.debTimer = null;
     }
 
-    componentDidMount(){
+    componentDidMount() {
         fetchData.call(this, { q: '', endpoint: 'top-headlines' })
     }
 
-    onChangeHandler(evt){
+    onChangeHandler(evt) {
         var me = this;
         var searchTerm = me.inpRef.current.value;
         this.setState({
@@ -36,11 +36,11 @@ class Home extends React.Component {
     }
 
     render() {
-        let searchTerm = this.state.searchTerm; 
+        let searchTerm = this.state.searchTerm;
         let data = this.state.data;
         let articles = (data && data.articles) || [];
 
-        return(
+        return (
             <MainLayout>
                 <SearchBox
                     inpRef={this.inpRef}

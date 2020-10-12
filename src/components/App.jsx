@@ -17,11 +17,11 @@ function App() {
             <div>
                 <Navigation />
                 <Switch>
-                {
-                    routes.map((route, i) => (
-                        <Route key={route.key} path={route.path} component={route.component} exact={route.isExact} />
-                    ))
-                }
+                    {
+                        routes.map((route, i) => (
+                            <Route key={route.key} path={route.path} component={route.component} exact={route.isExact} />
+                        ))
+                    }
                 </Switch>
             </div>
         </Router>

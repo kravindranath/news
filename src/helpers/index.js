@@ -1,31 +1,31 @@
 let _get = require('lodash/get');
 
 const stripHtmlRegex = /(<([^>]+)>)/gi;
-const arrayMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+const arrayMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-function stripTags(str){
-    if(!str) return '';
+function stripTags(str) {
+    if (!str) return '';
     return str.replace(stripHtmlRegex, '');
 }
 
-function getRegionVal(){
+function getRegionVal() {
     let regionVal = 'gb';
-    if(localStorage) {
+    if (localStorage) {
         regionVal = localStorage.getItem('locale');
     }
     return regionVal;
 }
 
-function setRegionVal(region){
+function setRegionVal(region) {
     let regionVal = region || 'gb';
-    if(localStorage) {
+    if (localStorage) {
         localStorage.setItem('locale', regionVal);
     }
 }
 
-function formatDateShort(str){
+function formatDateShort(str) {
     let dateLabel = '';
-    if(str) {
+    if (str) {
         let pD = new Date(str);
         let day = pD.getDay();
         let monthIdx = pD.getMonth();
@@ -37,16 +37,16 @@ function formatDateShort(str){
     return dateLabel;
 }
 
-function getRouteParams(_this){
+function getRouteParams(_this) {
     let me = _this || {};
     let params = _get(me, 'props.match.params', {});
     return params;
 }
 
 module.exports = {
-    getRouteParams  : getRouteParams,
-    getRegionVal    : getRegionVal,
-    setRegionVal    : setRegionVal,
-    formatDateShort : formatDateShort,
-    stripTags       : stripTags
+    getRouteParams: getRouteParams,
+    getRegionVal: getRegionVal,
+    setRegionVal: setRegionVal,
+    formatDateShort: formatDateShort,
+    stripTags: stripTags
 };
