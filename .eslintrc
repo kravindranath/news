@@ -1,8 +1,27 @@
 {
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+    ],
     "parser": "babel-eslint",
     "rules": {
-        "eqeqeq" : ["error", "always"],
-        "semi"   : ["error", "always"],
-        "quotes": ["error", "single"]
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true
+            }
+        ]
     }
 }
