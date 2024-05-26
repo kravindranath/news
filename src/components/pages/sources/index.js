@@ -1,4 +1,3 @@
-
 import React from 'react';
 import api from '../../../api';
 
@@ -8,33 +7,32 @@ import { getRouteParams } from '../../../helpers';
 
 import '../../../css/sources';
 
-const fetchData = api.fetchData;
+const { fetchData } = api;
 
 class Sources extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+    };
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            data: [],
-        };
-    }
+  componentDidMount() {
+    const params = getRouteParams(this);
 
-    componentDidMount() {
-        let params = getRouteParams(this);
+    fetchData.call(this, { endpoint: 'sources', sourceId: params.id });
+  }
 
-        fetchData.call(this, { endpoint: 'sources', sourceId: params.id });
-    }
+  render() {
+    const { data } = this.state;
+    const sources = (data && data.sources) || [];
 
-    render() {
-        let data = this.state.data;
-        let sources = (data && data.sources) || [];
-
-        return (
-            <MainLayout>
-                <ResultsContent contentType="sources" sources={sources} />
-            </MainLayout>
-        );
-    }
+    return (
+      <MainLayout>
+        <ResultsContent contentType="sources" sources={sources} />
+      </MainLayout>
+    );
+  }
 }
 
 export default Sources;

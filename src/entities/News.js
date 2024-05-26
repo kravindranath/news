@@ -1,5 +1,5 @@
-let _get = require('lodash/get');
-let stripTags = require('../helpers').stripTags;
+const _get = require('lodash/get');
+const { stripTags } = require('../helpers');
 
 /**
  * Create News constructor
@@ -7,20 +7,21 @@ let stripTags = require('../helpers').stripTags;
  * @returns {Object}
  */
 function News(_item) {
-    let item = _item || {};
-    let { title, description, urlToImage, publishedAt, author, source, url } = { ...item };
+  const item = _item || {};
+  const { title, description, urlToImage, publishedAt, author, source, url } = {
+    ...item,
+  };
 
-    this.title = title;
-    this.description = stripTags(description);
-    this.imageSrc = urlToImage;
-    this.source = _get(source, 'name', '');
-    this.sourceId = _get(source, 'id', '');
-    this.author = stripTags(author) || '';
-    this.url = url;
-    this.publishedAt = publishedAt || '';
+  this.title = title;
+  this.description = stripTags(description);
+  this.imageSrc = urlToImage;
+  this.source = _get(source, 'name', '');
+  this.sourceId = _get(source, 'id', '');
+  this.author = stripTags(author) || '';
+  this.url = url;
+  this.publishedAt = publishedAt || '';
 
-    return this;
-
+  return this;
 }
 
 module.exports = News;

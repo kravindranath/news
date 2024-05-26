@@ -1,6 +1,7 @@
 {
     "extends": [
         "eslint:recommended",
+        "airbnb-base",
         "plugin:prettier/recommended"
     ],
     "parser": "babel-eslint",
@@ -28,5 +29,9 @@
                 "singleQuote": true
             }
         ]
-    }
+    },
+    "plugins": [
+        "import",
+        "prettier"
+    ]
 }

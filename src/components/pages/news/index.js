@@ -1,4 +1,3 @@
-
 import React from 'react';
 import api from '../../../api';
 
@@ -8,33 +7,32 @@ import { getRouteParams } from '../../../helpers';
 
 import '../../../css/news';
 
-const fetchData = api.fetchData;
+const { fetchData } = api;
 
 class News extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+    };
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            data: [],
-        };
-    }
+  componentDidMount() {
+    const params = getRouteParams(this);
 
-    componentDidMount() {
-        let params = getRouteParams(this);
+    fetchData.call(this, { sourceId: params.id });
+  }
 
-        fetchData.call(this, { sourceId: params.id });
-    }
+  render() {
+    const { data } = this.state;
+    const articles = (data && data.articles) || [];
 
-    render() {
-        let data = this.state.data;
-        let articles = (data && data.articles) || [];
-
-        return (
-            <MainLayout>
-                <ResultsContent contentType="articles" articles={articles} />
-            </MainLayout>
-        );
-    }
+    return (
+      <MainLayout>
+        <ResultsContent contentType="articles" articles={articles} />
+      </MainLayout>
+    );
+  }
 }
 
 export default News;

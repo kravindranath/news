@@ -1,4 +1,4 @@
-let stripTags = require('../helpers').stripTags;
+const { stripTags } = require('../helpers');
 
 /**
  * Create Source constructor
@@ -6,15 +6,15 @@ let stripTags = require('../helpers').stripTags;
  * @returns {Object}
  */
 function Source(_item) {
-    let item = _item || {};
-    let { id, category, description, name } = { ...item };
+  const item = _item || {};
+  const { id, category, description, name } = { ...item };
 
-    this.id = id;
-    this.description = stripTags(description);
-    this.category = category;
-    this.name = name;
+  this.id = id;
+  this.description = stripTags(description);
+  this.category = category;
+  this.name = name;
 
-    return this;
+  return this;
 }
 
 module.exports = Source;

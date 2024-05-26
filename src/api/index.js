@@ -1,46 +1,44 @@
-
 const config = require('../config/default');
 const { stripTags, getRegionVal } = require('../helpers');
 
 const ROOT_PATH = 'https://newsapi.org/v2/';
 const stripSpecialRegex = /\W+/gi;
-const API_KEY = config.API_KEY;
+const { API_KEY } = config;
 
 /**
- * Create API URL from Options passed as params 
+ * Create API URL from Options passed as params
  * @param {Object} params params country, sourceId etc
  */
 function getAPIUrl(params) {
+  const country = getRegionVal() || '';
+  const q = params.q || '';
+  const paramsNew = {};
+  const API_NAME = params.endpoint || 'top-headlines';
+  const addCountryParam = API_NAME === 'top-headlines' && !params.sourceId;
 
-    let country = getRegionVal() || '';
-    let q = params.q || '';
-    let paramsNew = {};
-    let API_NAME = params.endpoint || 'top-headlines';
-    let addCountryParam = ((API_NAME === 'top-headlines') && !(params.sourceId));
+  if (addCountryParam) {
+    paramsNew.country = country;
+  }
 
-    if (addCountryParam) {
-        paramsNew.country = country;
-    }
+  if (params && params.sourceId) {
+    paramsNew.sources = params.sourceId;
+  }
 
-    if (params && params.sourceId) {
-        paramsNew.sources = params.sourceId;
-    }
+  if (q && q.length > 0) {
+    paramsNew.q = q.replace(stripSpecialRegex, '+');
+  }
 
-    if (q && q.length > 0) {
-        paramsNew.q = q.replace(stripSpecialRegex, '+');
-    }
+  paramsNew.apiKey = params.apiKey || API_KEY;
 
-    paramsNew.apiKey = params.apiKey || API_KEY;
+  const path = `${ROOT_PATH}${API_NAME}`;
+  const queryParams = Object.entries(paramsNew);
+  let queryStr = '';
 
-    let path = `${ROOT_PATH}${API_NAME}`;
-    let queryParams = Object.entries(paramsNew);
-    let queryStr = '';
+  queryParams.forEach((item) => {
+    queryStr += `&${item && item.join('=')}`;
+  });
 
-    queryParams.forEach((item) => {
-        queryStr += `&${(item && item.join('='))}`;
-    });
-
-    return `${path}?${queryStr.substr(1)}`;
+  return `${path}?${queryStr.substr(1)}`;
 }
 
 /**
@@ -48,30 +46,35 @@ function getAPIUrl(params) {
  * @param {Object} _options Options to create API path
  */
 function fetchData(_options) {
-    let me = this;
-    let options = _options || '';
-    let { endpoint, sourceId, q } = { ...options };
+  const me = this;
+  const options = _options || '';
+  const { endpoint, sourceId, q } = { ...options };
 
-    let cleanSearch = stripTags(q);
-    let apiUrl = getAPIUrl({ q: cleanSearch, sourceId: sourceId, endpoint: endpoint });
+  const cleanSearch = stripTags(q);
+  const apiUrl = getAPIUrl({
+    q: cleanSearch,
+    sourceId,
+    endpoint,
+  });
 
-    if (me.debTimer !== null) {
-        clearTimeout(me.debTimer);
-    }
+  if (me.debTimer !== null) {
+    clearTimeout(me.debTimer);
+  }
 
-    me.debTimer = setTimeout(function () {
-        fetch(apiUrl).then((res) => {
-            return res.json();
-        }).then((data) => {
-            me.setState({
-                data: data || []
-            });
+  me.debTimer = setTimeout(function () {
+    fetch(apiUrl)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        me.setState({
+          data: data || [],
         });
-    }, 1000);
-
+      });
+  }, 1000);
 }
 
 module.exports = {
-    fetchData: fetchData,
-    getAPIUrl: getAPIUrl
+  fetchData,
+  getAPIUrl,
 };

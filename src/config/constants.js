@@ -1,7 +1,3 @@
 module.exports = {
-    regions : [
-        'us',
-        'gb',
-        'au'
-    ]
+  regions: ['us', 'gb', 'au'],
 };
